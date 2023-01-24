@@ -1,0 +1,11 @@
+{
+  "name": "flexbox-game",
+  "version": "1.0.0",
+  "description": "A game for learning CSS flexbox",
+  "main": "game.js",
+  "dependencies": {
+    "animate.css": "^3.4.0",
+    "jquery": "^3.5.1"
+  },
+  "devDependencies": {}
+}

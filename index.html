@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Flexbox Froggy - A game for learning CSS flexbox</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:url"           content="https://flexboxfroggy.com">
+    <meta property="og:type"          content="website">
+    <meta property="og:title"         content="Flexbox Froggy">
+    <meta property="og:description"   content="A game for learning CSS flexbox">
+    <meta property="og:image"         content="https://flexboxfroggy.com/images/screenshot.png">
+    <meta property="fb:app_id"        content="916849395036923">
+    <meta name="twitter:url"          content="https://flexboxfroggy.com">
+    <meta name="twitter:title"        content="Flexbox Froggy">
+    <meta name="twitter:description"  content="A game for learning CSS flexbox">
+    <meta name="twitter:image"        content="https://flexboxfroggy.com/images/screenshot.png">
+    <link rel="stylesheet" href="node_modules/animate.css/animate.min.css">
+    <link href='https://fonts.googleapis.com/css?family=PT+Sans|Fredoka+One|Source+Code+Pro' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <section id="sidebar">
+      <div class="header">
+        <div>
+          <h1 class="title">Flexbox Froggy</h1>
+        </div>
+        <div id="level-counter">
+          <span class="arrow left">
+            <span class="triangle"></span>
+          </span>
+          <span id="level-indicator">
+            <span id="labelLevel" class="translate">Level</span>
+            <span class="current">1</span>
+            <span id="labelOf" class="translate">of</span>
+            <span class="total">1</span>
+            <span class="caret">▾</span>
+          </span>
+          <span class="arrow right">
+            <span class="triangle"></span>
+          </span>
+          <div id="levelsWrapper" class="tooltip">
+            <div id="levels"></div>
+            <div id="labelReset" class="translate">Reset</div>
+          </div>
+        </div>
+      </div>
+      <p id="instructions"></p>
+      <div id="editor">
+        <div id="css">
+          <div class="line-numbers">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10</div>
+          <pre id="before"></pre>
+          <textarea id="code" autofocus autocapitalize="none"></textarea>
+          <pre id="after"></pre>
+        </div>
+        <button id="next" class="translate">Next</button>
+      </div>
+      <div class="bsa-custom"></div>
+
+      <div class="credits">
+        <span id="settings">
+          <span id="labelSettings" class="toggle translate">Settings</span>
+          <span class="tooltip">
+            <section>
+              <h4 id="labelLanguage" class="translate">Language</h4>
+              <select id="language">
+                <option value="en">English</option>
+                <option value="ru">Русский</option>
+              </select>
+            </section>
+            <section>
+              <h4 id="labelDifficulty" class="translate">Difficulty</h4>
+              <form id="difficulty">
+                <div>
+                  <input type="radio" name="difficulty" id="difficultyEasy" value="easy" checked>
+                  <label id="labelDifficultyEasy" for="difficultyEasy" class="translate">Beginner</label>
+                </div>
+                <div>
+                  <input type="radio" name="difficulty" id="difficultyMedium" value="medium">
+                  <label id="labelDifficultyMedium" for="difficultyMedium" class="translate">Intermediate - No Directions</label>
+                </div>
+                <div>
+                  <input type="radio" name="difficulty" id="difficultyHard" value="hard">
+                  <label id="labelDifficultyHard" for="difficultyHard" class="translate">Expert - No Directions &amp; Random Levels</label>
+                </div>
+              </form>
+            </section>
+            <section>
+              <h4 id="labelColorblind" class="translate">Colorblind Mode</h4>
+              <form id="colorblind">
+                <div>
+                  <div>
+                    <input type="radio" name="colorblind" id="colorblindOff" value="false" checked>
+                    <label id="labelColorblindOff" for="colorblindOff" class="translate">Off</label>
+                  </div>
+                  <div>
+                    <input type="radio" name="colorblind" id="colorblindOn" value="true">
+                    <label id="labelColorblindOn" for="colorblindOn" class="translate">On</label>
+                  </div>
+              </form>
+            </section>
+          </span>
+        </span>
+      </div>
+    </section>
+    <section id="view">
+      <div id="board">
+        <div id="pond">
+        </div>
+        <div id="background">
+        </div>
+      </div>
+    </section>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="js/levels.js"></script>
+    <script src="js/docs.js"></script>
+    <script src="js/messages.js"></script>
+    <script src="js/game.js"></script>
+  </body>
+</html>
