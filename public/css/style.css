@@ -462,8 +462,8 @@ button:not(.disabled):hover {
 #board {
   position: sticky;
   top: 0;
-  width: 50vw;
-  height: 50vw;
+  width: 35vw;
+  height: 35vw;
   min-width: 300px;
   min-height: 300px;
   max-width: 100vh;
@@ -484,7 +484,7 @@ button:not(.disabled):hover {
 
 #background {
   z-index: 10;
-  border-radius: 0 0 0 10px;
+  border-radius: 10px;
   background-color: #1F5768;
 }
 
@@ -592,6 +592,11 @@ button:not(.disabled):hover {
   flex-wrap: wrap;
 }
 
+.top {
+  display: flex;
+  justify-content: space-between;
+}
+
 @media only screen and (max-width: 767px) {
   body {
     flex-direction: column-reverse;
@@ -623,38 +628,5 @@ button:not(.disabled):hover {
   #labelFooter {
     display: none;
   }
-}
-
-/* Native by BuySellAds */
-.native-ad {
-  display: block;
-  padding: 10px 20px 8px;
-  border-radius: 4px;
-  background: repeating-linear-gradient(-45deg, transparent, transparent 5px, hsla(0, 0%, 0%, .03) 5px, hsla(0, 0%, 0%, .03) 10px) hsla(0, 0%, 0%, .03);
-  margin-top: 1.5em;
-  font-size: 12px;
-}
-
-.native-ad a {
-  text-decoration: none;
-  display: block;
-  line-height: 1.5;
-}
-
-
-.native-ad .sponsor {
-  position: relative;
-  top: -1px;
-  padding: 3px 4px 2px;
-  margin-right: 4px;
-  border: solid 1px currentColor;
-  border-radius: 2px;
-  color: currentColor;
-  content: "Sponsor";
-  text-transform: uppercase;
-  font-size: 11px;
-  letter-spacing: 1px;
-  font-weight: 600;
-  line-height: 1;
 }
 

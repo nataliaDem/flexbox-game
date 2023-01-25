@@ -5,12 +5,12 @@
   <script src="public/js/jquery.js" type="text/javascript" charset="utf-8"></script>
   <script src="public/js/constants.js" type="text/javascript" charset="utf-8"></script>
   <script src="public/js/common.js" type="text/javascript" charset="utf-8"></script>
-  <script src="public/js/player.js" type="text/javascript" charset="utf-8"></script>
+  <script src="public/js/admin.js" type="text/javascript" charset="utf-8"></script>
   <script src="public/js/jquery.mCustomScrollbar.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
 
 
-  <!--  <link rel="icon" type="image/png" href="public/images/logo-dev.png">-->
+<!--  <link rel="icon" type="image/png" href="public/images/logo-dev.png">-->
   <link href='https://fonts.googleapis.com/css?family=Exo+2:200,400,600,400italic,600italic' rel='stylesheet'>
   <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
   <link rel="stylesheet" href="public/css/jquery.mCustomScrollbar.css" type="text/css" media="screen" title="no title"
@@ -22,27 +22,16 @@
   <meta property="og:title" content="CSS selectors game"/>
   <meta property="og:description" content="A fun game to help you practice CSS selectors."/>
   <meta property="og:image" content="https://flukeout.github.io/images/fb-share.jpg"/>
-  <!--  <audio autoplay loop>-->
-  <!--    <source src="public/audio.mp3" type="audio/mpeg">-->
-  <!--  </audio>-->
+<!--  <audio autoplay loop>-->
+<!--    <source src="public/audio.mp3" type="audio/mpeg">-->
+<!--  </audio>-->
 </head>
 
 <body>
-<div class="view player-start-view">
-  <p>Open valid link with game code please :-)</p>
+<div class="view create-view">
+  <button class="btn create-game">Create new game</button>
 </div>
-<div class="view auth-view">
-  <div>
-    <p>Enter your name:</p>
-    <input class="view-input member-name" type="text" placeholder="name">
-    <button class="btn submit-login">Submit</button>
-  </div>
-</div>
-<div class="view player-wait-view">
-  <p>Waiting for other players to join...</p>
-  <div class="leaderboard"></div>
-</div>
-<div class="view player-game-view">
+<div class="view game-view">
   <div class="left-col">
     <div class="top">
       <section id="sidebar">
@@ -145,7 +134,7 @@
     <div class="leaderboard"></div>
     <div>
       <button class="btn start-game">Start game</button>
-      <!--      <a class="btn reset-progress" href="#">Reset</a>-->
+<!--      <a class="btn reset-progress" href="#">Reset</a>-->
     </div>
   </div>
 </div>
