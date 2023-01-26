@@ -4,10 +4,14 @@
   <title>Flexbox game</title>
   <script src="public/js/jquery.js" type="text/javascript" charset="utf-8"></script>
   <script src="public/js/constants.js" type="text/javascript" charset="utf-8"></script>
+  <script src="public/js/levels.js"></script>
   <script src="public/js/common.js" type="text/javascript" charset="utf-8"></script>
   <script src="public/js/player.js" type="text/javascript" charset="utf-8"></script>
   <script src="public/js/jquery.mCustomScrollbar.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+  <script src="public/js/docs.js"></script>
+  <script src="public/js/messages.js"></script>
+  <script src="public/js/game.js"></script>
 
 
   <!--  <link rel="icon" type="image/png" href="public/images/logo-dev.png">-->
@@ -32,11 +36,9 @@
   <p>Open valid link with game code please :-)</p>
 </div>
 <div class="view auth-view">
-  <div>
-    <p>Enter your name:</p>
-    <input class="view-input member-name" type="text" placeholder="name">
-    <button class="btn submit-login">Submit</button>
-  </div>
+  <p>Enter your name:</p>
+  <input class="view-input member-name" type="text" placeholder="name">
+  <button class="btn submit-login">Submit</button>
 </div>
 <div class="view player-wait-view">
   <p>Waiting for other players to join...</p>
@@ -137,11 +139,7 @@
         </div>
       </div>
     </div>
-    <div class="wait-view">
-      <div class="game-code"></div>
-      <div>Game link: <a class="game-link"></a></div>
-      <p>Waiting for players to join...</p>
-    </div>
+    <p>Leaderboard</p>
     <div class="leaderboard"></div>
     <div>
       <button class="btn start-game">Start game</button>
@@ -152,9 +150,5 @@
 <div class="reset-wrap">
   <a class="btn reset-progress">Start new game</a>
 </div>
-<script src="public/js/levels.js"></script>
-<script src="public/js/docs.js"></script>
-<script src="public/js/messages.js"></script>
-<script src="public/js/game.js"></script>
 </body>
 </html>
