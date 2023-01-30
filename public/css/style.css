@@ -41,7 +41,7 @@ body {
   width: 50%;
   min-width: 300px;
   position: relative;
-  padding: 2em;
+  padding-right: 20px;
   background-color: #43A047;
   font-size: 15px;
 }
@@ -294,15 +294,15 @@ pre {
 .arrow {
   float: left;
   height: 30px;
-  background-color: rgba(255, 255, 255, 0.2);
 }
 
 #level-indicator {
   display: inline-block;
   width: 160px;
-  line-height: 30px;
+  line-height: 20px;
   text-align: center;
   cursor: pointer;
+  font-size: 20px;
 }
 
 #labelLevel {
@@ -312,11 +312,6 @@ pre {
 .caret {
   display: inline-block;
   margin-left: 2px;
-}
-
-#level-indicator:hover,
-.arrow:not(.disabled):hover {
-  background-color: rgba(255, 255, 255, 0.4);
 }
 
 #labelReset {

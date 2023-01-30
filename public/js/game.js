@@ -1,3 +1,6 @@
+let checkGameStarted;
+levels = levels.slice(1,levels.length-1);
+
 var game = {
   colorblind: (localStorage.colorblind && JSON.parse(localStorage.colorblind)) || 'false',
   language: window.location.hash.substring(1) || 'en',
@@ -106,6 +109,14 @@ var game = {
         game.solved = [];
         game.loadLevel(levels[0]);
 
+        localStorage.removeItem("gameCode");
+        localStorage.removeItem("gameUser");
+        localStorage.removeItem("gameStatus");
+        localStorage.removeItem("userId");
+        localStorage.removeItem("userIsLogged");
+        urlParams.delete("code");
+        history.replaceState(null, null, window.location.pathname);
+
         $('.level-marker').removeClass('solved');
       }
     });
@@ -182,15 +193,6 @@ var game = {
       game.language = window.location.hash.substring(1) || 'en';
       game.translate();
 
-      $('#tweet iframe').remove();
-      var html = '<a href="https://twitter.com/share" class="twitter-share-button"{count} data-url="https://flexboxfroggy.com" data-via="thomashpark">Tweet</a> ' +
-                 '<a href="https://twitter.com/thomashpark" class="twitter-follow-button" data-show-count="false">Follow @thomashpark</a>';
-      $('#tweet').html(html);
-
-      if (typeof twttr !== 'undefined') {
-        twttr.widgets.load();
-      }
-
       if (game.language === 'en') {
         history.replaceState({}, document.title, './');
       }
@@ -211,6 +213,7 @@ var game = {
       this.level++
     }
 
+    updateProgress(this.level, Date.now());
     var levelData = levels[this.level];
     this.loadLevel(levelData);
   },
@@ -269,6 +272,9 @@ var game = {
     $('#before').text(level.before);
     $('#after').text(level.after);
     $('#next').removeClass('animated animation').addClass('disabled');
+
+    const percent = (this.level + 1) / levels.length * 100;
+    $(".progress").css("width", percent + "%");
 
     var instructions = level.instructions[game.language] || level.instructions.en;
     $('#instructions').html(instructions);
@@ -532,6 +538,104 @@ var game = {
   }
 };
 
+
+function showAuthViewForPlayer() {
+  $(".player-game-view, .player-wait-view, .player-start-view").addClass('d-none');
+  $(".auth-view").removeClass('d-none');
+}
+
+function showWaitViewForPlayer() {
+  $(".auth-view, .player-game-view, .player-start-view").addClass('d-none');
+  $(".player-wait-view").removeClass('d-none');
+}
+
+function showGameViewForPlayer() {
+  $(".auth-view, .player-wait-view, .player-start-view").addClass('d-none');
+  $(".player-game-view").removeClass('d-none');
+  // game.loadLevel();
+}
+
+function showGameCodeView() {
+  $(".player-game-view, .player-wait-view").addClass('d-none');
+  $(".player-start-view").removeClass('d-none');
+}
+
+function startGameForPlayer() {
+  const gameCode = localStorage.getItem("gameCode");
+  getGameStatus(gameCode)
+    .then(res => {
+      console.log(res);
+      if (res === STATUSES.ACTIVE) {
+        showGameViewForPlayer();
+        localStorage.setItem("gameStatus", STATUSES.ACTIVE);
+        clearInterval(checkGameStarted);
+      }
+    });
+}
+
+function login() {
+  const gameCode = localStorage.getItem("gameCode");
+  console.log(gameCode);
+  const name = $('.member-name').val();
+  console.log(name);
+  axios.post(`${baseUrl}/api/auth?code=${gameCode}`, {name: name})
+    .then(res => {
+      console.log(res.data);
+      localStorage.setItem("userIsLogged", true);
+      localStorage.setItem("userId", res.data.userId);
+      showWaitViewForPlayer();
+      checkGameStarted = setInterval(function() {
+        startGameForPlayer()
+      }, intervalTimeout);
+    });
+}
+
+function updateProgress(level, timestamp) {
+  const gameCode = localStorage.getItem("gameCode");
+  const userId = localStorage.getItem("userId")
+  axios.post(`${baseUrl}/api/update-progress?code=${gameCode}`, {
+    id: userId,
+    level: level + 1,
+    lastAnswerTime: timestamp
+  })
+    .then(res => {
+      console.log(res.data);
+    });
+}
+
+
 $(document).ready(function() {
+
+  $(".member-name").on("keypress", function (e) {
+    e.stopPropagation();
+    if (e.keyCode === 13) {
+      login();
+      return false;
+    }
+  });
+
+  $(".submit-login").on("click", function () {
+    login();
+  });
+
+  if (Number(localStorage.getItem("gameCode"))) {
+    if (localStorage.getItem("gameStatus") === STATUSES.ACTIVE) {
+      showGameViewForPlayer();
+    } else if (localStorage.getItem("userIsLogged")) {
+      showWaitViewForPlayer();
+      checkGameStarted = setInterval(function() {
+        startGameForPlayer()
+      }, intervalTimeout);
+    } else {
+      showAuthViewForPlayer();
+    }
+  } else {
+    showGameCodeView();
+  }
+
+  $(".reset-progress").on("click", function () {
+    showGameCodeView();
+  });
+
   game.start();
 });

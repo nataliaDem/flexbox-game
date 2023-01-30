@@ -1,5 +1,3 @@
-let currentLevel = 0;
-
 localStorage.setItem("userRole", "admin");
 
 $(document).ready(function () {
@@ -49,7 +47,6 @@ function createNewGame() {
     .then(res => {
       showGameViewForAdmin(res.data.code);
       $('.start-game').removeClass('d-none');
-      loadLevel();
       localStorage.setItem("gameCode", res.data.code);
       setCodeToUrlParams(res.data.code);
     });

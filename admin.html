@@ -4,13 +4,17 @@
   <title>Flexbox game</title>
   <script src="public/js/jquery.js" type="text/javascript" charset="utf-8"></script>
   <script src="public/js/constants.js" type="text/javascript" charset="utf-8"></script>
+  <script src="public/js/levels.js"></script>
+  <script src="public/js/docs.js"></script>
+  <script src="public/js/messages.js"></script>
+  <script src="public/js/game.js"></script>
   <script src="public/js/common.js" type="text/javascript" charset="utf-8"></script>
   <script src="public/js/admin.js" type="text/javascript" charset="utf-8"></script>
   <script src="public/js/jquery.mCustomScrollbar.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
 
 
-<!--  <link rel="icon" type="image/png" href="public/images/logo-dev.png">-->
+  <link rel="icon" type="image/png" href="public/images/logo.png">
   <link href='https://fonts.googleapis.com/css?family=Exo+2:200,400,600,400italic,600italic' rel='stylesheet'>
   <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
   <link rel="stylesheet" href="public/css/jquery.mCustomScrollbar.css" type="text/css" media="screen" title="no title"
@@ -19,12 +23,12 @@
   <link rel="stylesheet" href="public/css/common.css" type="text/css" media="screen" title="no title" charset="utf-8">
 
   <meta property="og:type" content="website"/>
-  <meta property="og:title" content="CSS selectors game"/>
-  <meta property="og:description" content="A fun game to help you practice CSS selectors."/>
-  <meta property="og:image" content="https://flukeout.github.io/images/fb-share.jpg"/>
-<!--  <audio autoplay loop>-->
-<!--    <source src="public/audio.mp3" type="audio/mpeg">-->
-<!--  </audio>-->
+  <meta property="og:title" content="Flexbox game"/>
+  <meta property="og:description" content="A fun game to help you practice flexbox."/>
+  <meta property="og:image" content="https://flexboxfroggy.com/images/screenshot.png"/>
+  <audio autoplay loop>
+    <source src="public/audio.mp3" type="audio/mpeg">
+  </audio>
 </head>
 
 <body>
@@ -33,14 +37,18 @@
 </div>
 <div class="view game-view">
   <div class="left-col">
-    <div class="top">
+    <div class="header">
+      <img class="logo" src="public/images/logo.png">
+      <span>Devhouse Flexbox Froggy game</span>
+    </div>
+    <div class="content">
       <section id="sidebar">
         <p id="instructions"></p>
 
         <div class="bsa-custom"></div>
 
         <div class="credits">
-        <span id="settings">
+        <span id="settings" class="d-none">
           <span id="labelSettings" class="toggle translate">Settings</span>
           <span class="tooltip">
             <section>
@@ -79,10 +87,20 @@
                     <input type="radio" name="colorblind" id="colorblindOn" value="true">
                     <label id="labelColorblindOn" for="colorblindOn" class="translate">On</label>
                   </div>
+                </div>
               </form>
             </section>
           </span>
         </span>
+        </div>
+        <div id="editor">
+          <div id="css">
+            <div class="line-numbers">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10</div>
+            <pre id="before"></pre>
+            <textarea id="code" autofocus autocapitalize="none"></textarea>
+            <pre id="after"></pre>
+          </div>
+          <button id="next" class="translate">Next</button>
         </div>
       </section>
       <section id="view">
@@ -94,22 +112,13 @@
         </div>
       </section>
     </div>
-    <div id="editor">
-      <div id="css">
-        <div class="line-numbers">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10</div>
-        <pre id="before"></pre>
-        <textarea id="code" autofocus autocapitalize="none"></textarea>
-        <pre id="after"></pre>
-      </div>
-      <button id="next" class="translate">Next</button>
+    <div class="footer">
+      <span>Flexbox Froggy is created by</span> <a href="https://codepip.com">Codepip</a>
     </div>
   </div>
   <div class="right-col menu-open">
     <div class="level-menu">
       <div id="level-counter">
-          <span class="arrow left">
-            <span class="triangle"></span>
-          </span>
         <span id="level-indicator">
             <span id="labelLevel" class="translate">Level</span>
             <span class="current">1</span>
@@ -117,13 +126,12 @@
             <span class="total">1</span>
 
           </span>
-        <span class="arrow right">
-            <span class="triangle"></span>
-          </span>
         <div id="levelsWrapper" class="tooltip">
           <div id="levels"></div>
-          <div id="labelReset" class="translate">Reset</div>
         </div>
+      </div>
+      <div class="level-progress">
+        <div class="progress"></div>
       </div>
     </div>
     <div class="wait-view">
@@ -139,11 +147,7 @@
   </div>
 </div>
 <div class="reset-wrap">
-  <a class="btn reset-progress">Start new game</a>
+  <a class="btn reset-progress" id="labelReset">Start new game</a>
 </div>
-<script src="public/js/levels.js"></script>
-<script src="public/js/docs.js"></script>
-<script src="public/js/messages.js"></script>
-<script src="public/js/game.js"></script>
 </body>
 </html>
