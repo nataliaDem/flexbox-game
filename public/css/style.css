@@ -178,7 +178,7 @@ a:hover {
 }
 
 #instructions {
-  padding-top: 1rem;
+  padding-top: 5px;
 }
 
 #instructions,
@@ -188,6 +188,7 @@ a:hover {
 	margin: 0;
   padding-bottom: 1em;
 }
+
 
 #editor {
   position: relative;

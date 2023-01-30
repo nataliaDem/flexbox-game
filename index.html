@@ -11,9 +11,7 @@
   <script src="public/js/docs.js"></script>
   <script src="public/js/messages.js"></script>
   <script src="public/js/game.js"></script>
-
-
-    <link rel="icon" type="image/png" href="public/images/logo.png">
+  <link rel="icon" type="image/png" href="public/images/logo.png">
   <link href='https://fonts.googleapis.com/css?family=Exo+2:200,400,600,400italic,600italic' rel='stylesheet'>
   <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
   <link rel="stylesheet" href="public/css/jquery.mCustomScrollbar.css" type="text/css" media="screen" title="no title"
@@ -26,8 +24,14 @@
   <meta property="og:description" content="A fun game to help you practice flexbox."/>
   <meta property="og:image" content="https://flexboxfroggy.com/images/screenshot.png"/>
     <audio autoplay loop>
-      <source src="public/audio.mp3" type="audio/mpeg">
+      <source src="public/bg.mp3" type="audio/mpeg">
     </audio>
+  <audio id="win-level">
+    <source src="public/win-level.wav" type="audio/mpeg">
+  </audio>
+  <audio id="win-game">
+    <source src="public/win-game.mp3" type="audio/mpeg">
+  </audio>
 </head>
 
 <body>
@@ -51,6 +55,7 @@
     </div>
     <div class="content">
       <section id="sidebar">
+        <b>Help flogs</b>
         <p id="instructions"></p>
 
         <div class="bsa-custom"></div>
@@ -142,7 +147,7 @@
         <div class="progress"></div>
       </div>
     </div>
-    <p>Leaderboard</p>
+    <p class="lb-title">Leaderboard</p>
     <div class="leaderboard"></div>
   </div>
 </div>

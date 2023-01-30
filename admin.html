@@ -27,7 +27,13 @@
   <meta property="og:description" content="A fun game to help you practice flexbox."/>
   <meta property="og:image" content="https://flexboxfroggy.com/images/screenshot.png"/>
   <audio autoplay loop>
-    <source src="public/audio.mp3" type="audio/mpeg">
+    <source src="public/bg.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="win-level">
+    <source src="public/win-level.wav" type="audio/mpeg">
+  </audio>
+  <audio id="win-game">
+    <source src="public/win-game.mp3" type="audio/mpeg">
   </audio>
 </head>
 
@@ -43,6 +49,7 @@
     </div>
     <div class="content">
       <section id="sidebar">
+        <b>Help flogs</b>
         <p id="instructions"></p>
 
         <div class="bsa-custom"></div>
@@ -137,7 +144,7 @@
     <div class="wait-view">
       <div class="game-code"></div>
       <div>Game link: <a class="game-link"></a></div>
-      <p>Waiting for players to join...</p>
+      <p class="lb-title">Waiting for players to join...</p>
     </div>
     <div class="leaderboard"></div>
     <div>

@@ -1,5 +1,5 @@
 let checkGameStarted;
-levels = levels.slice(1,levels.length-1);
+levels = levels.slice(1,4);
 
 var game = {
   colorblind: (localStorage.colorblind && JSON.parse(localStorage.colorblind)) || 'false',
@@ -53,12 +53,14 @@ var game = {
       $(this).removeClass('animated animation');
       $('.frog').addClass('animated bounceOutUp');
       $('.arrow, #next').addClass('disabled');
+      playWinSound("win-level");
 
       setTimeout(function() {
         if (game.level >= levels.length - 1) {
           game.win();
         } else {
           game.next();
+
         }
       }, 2000);
     });
@@ -451,6 +453,7 @@ var game = {
     var solution = $('#code').val();
 
     this.loadLevel(levelWin);
+    playWinSound("win-game");
 
     $('#editor').hide();
     $('#code').val(solution);

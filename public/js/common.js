@@ -1,19 +1,10 @@
-let level;
 const intervalTimeout = 1000;
 const urlMatch = window.location.pathname.match(/\/(.*?)\//);
 const hostingDirectory = urlMatch ? "/" + urlMatch[1] : "";
 const baseUrl = window.location.origin + hostingDirectory;
 
-var blankProgress = {
-  totalCorrect: 0,
-  percentComplete: 0,
-  lastPercentEvent: 0,
-  guessHistory: {}
-}
-
 const urlParams = new URLSearchParams(window.location.search);
 const gameCode = urlParams.get("code") || localStorage.getItem("gameCode") || null;
-let progress = JSON.parse(localStorage.getItem("progress")) || blankProgress;
 if (gameCode) {
   localStorage.setItem("gameCode", gameCode);
   setCodeToUrlParams(gameCode);
@@ -98,4 +89,9 @@ function setCodeToUrlParams(gameCode) {
     urlParams.set("code", gameCode);
     history.replaceState(null, null, window.location.pathname+"?"+urlParams.toString());
   }
+}
+
+function playWinSound(audioId) {
+  const audio = document.getElementById(audioId);
+  audio.play();
 }
