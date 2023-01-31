@@ -1,5 +1,3 @@
-localStorage.setItem("userRole", "admin");
-
 $(document).ready(function () {
 
   $(".game-code, .game-link").on("click", function () {
@@ -26,6 +24,12 @@ $(document).ready(function () {
 
   $(".reset-progress").on("click", function () {
     showStartViewForAdmin();
+  });
+
+  $('#level-indicator').on('click', function() {
+    $('#settings .tooltip').hide();
+    $('#levelsWrapper').toggle();
+    $('#instructions .tooltip').remove();
   });
 
 });

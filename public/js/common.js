@@ -58,6 +58,9 @@ function showLeaderBoard() {
           if (i === 2) {
             $(item).addClass('third');
           }
+          if (member.progress === levels.length) {
+            $(item).addClass('completed');
+          }
           $(item).html("<div><span class='member-rank'>" + (i + 1) + "</span>" +
             "<span class='member-name'>" + (userId && member.id === Number(userId) ? "> " : "") + member.name + "</span></div>" +
             "<div class='time'>" + formatTime(member.lastAnswerTime) +

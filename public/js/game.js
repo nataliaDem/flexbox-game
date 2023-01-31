@@ -1,5 +1,4 @@
 let checkGameStarted;
-levels = levels.slice(1,4);
 
 var game = {
   colorblind: (localStorage.colorblind && JSON.parse(localStorage.colorblind)) || 'false',
@@ -237,12 +236,6 @@ var game = {
       var level = $(this).attr('data-level');
       game.level = parseInt(level, 10);
       game.loadLevel(levels[level]);
-    });
-
-    $('#level-indicator').on('click', function() {
-      $('#settings .tooltip').hide();
-      $('#levelsWrapper').toggle();
-      $('#instructions .tooltip').remove();
     });
 
     $('.arrow.left').on('click', function() {
@@ -598,7 +591,7 @@ function updateProgress(level, timestamp) {
   const userId = localStorage.getItem("userId")
   axios.post(`${baseUrl}/api/update-progress?code=${gameCode}`, {
     id: userId,
-    level: level + 1,
+    level: level,
     lastAnswerTime: timestamp
   })
     .then(res => {

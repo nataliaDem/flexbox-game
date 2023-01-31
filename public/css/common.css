@@ -22,7 +22,7 @@
 }
 
 .leaderboard .time {
-    color: rgba(255,255,255,.3);
+    color: rgba(255,255,255,.4);
 }
 
 .leaderboard > div.leader {
@@ -43,6 +43,10 @@
 
 .leaderboard > div.third {
     font-size: 1.2em;
+}
+
+.leaderboard > div.completed {
+    background: linear-gradient(to right, #43A047 60%, #1F5768);
 }
 
 .leaderboard > div.third .member-rank  {
