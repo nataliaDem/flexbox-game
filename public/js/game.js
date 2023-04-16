@@ -2,7 +2,7 @@ let checkGameStarted;
 
 var game = {
   colorblind: (localStorage.colorblind && JSON.parse(localStorage.colorblind)) || 'false',
-  language: window.location.hash.substring(1) || 'en',
+  language: 'en',
   difficulty: 'easy',
   level: parseInt(localStorage.level, 10) || 0,
   answers: (localStorage.answers && JSON.parse(localStorage.answers)) || {},
@@ -14,11 +14,11 @@ var game = {
   start: function() {
     // navigator.language can include '-'
     // ref: https://developer.mozilla.org/en-US/docs/Web/API/NavigatorLanguage/language
-    var requestLang = window.navigator.language.split('-')[0];
-    if (window.location.hash === '' && requestLang !== 'en' && messages.languageActive.hasOwnProperty(requestLang)) {
-      game.language = requestLang;
-      window.location.hash = requestLang;
-    }
+    // var requestLang = window.navigator.language.split('-')[0];
+    // if (window.location.hash === '' && requestLang !== 'en' && messages.languageActive.hasOwnProperty(requestLang)) {
+    //   game.language = requestLang;
+    //   window.location.hash = requestLang;
+    // }
 
     game.translate();
     $('#level-counter .total').text(levels.length);
