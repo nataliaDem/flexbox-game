@@ -111,7 +111,7 @@ var game = {
         game.loadLevel(levels[0]);
 
         localStorage.removeItem("gameCode");
-        localStorage.removeItem("gameUser");
+        localStorage.removeItem("userRole");
         localStorage.removeItem("gameStatus");
         localStorage.removeItem("userId");
         localStorage.removeItem("userIsLogged");

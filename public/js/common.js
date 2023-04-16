@@ -5,6 +5,15 @@ const baseUrl = window.location.origin + hostingDirectory;
 
 const urlParams = new URLSearchParams(window.location.search);
 const gameCode = urlParams.get("code") || localStorage.getItem("gameCode") || null;
+const isNewGame = !!urlParams.has("new");
+if (isNewGame) {
+  localStorage.removeItem("gameCode");
+  localStorage.removeItem("userRole");
+  localStorage.removeItem("gameStatus");
+  localStorage.removeItem("userId");
+  localStorage.removeItem("userIsLogged");
+  urlParams.delete("new");
+}
 if (gameCode) {
   localStorage.setItem("gameCode", gameCode);
   setCodeToUrlParams(gameCode);

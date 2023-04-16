@@ -41,7 +41,7 @@ function showStartViewForAdmin() {
 
 function showGameViewForAdmin(code) {
   $('.game-code').text(code);
-  $('.game-link').text(`${baseUrl}/?code=${code}`);
+  $('.game-link').text(`${baseUrl}/?code=${code}&new`);
   $(".create-view").addClass('d-none');
   $(".wait-view, .game-view").removeClass('d-none');
 }
